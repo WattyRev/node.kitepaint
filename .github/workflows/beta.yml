@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: 12.x
       - run: npm ci
-      - name: Generate environment variables
-        run: node ./generateEnvironmentVariables.js
+      - name: Generate app.yaml
+        run: node ./generateAppYaml.js
         env:
           SERVICE_NAME: node-kitepaint-beta
           SQL_USER: ${{ secrets.SQL_USER_BETA }}

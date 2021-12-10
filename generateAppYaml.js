@@ -1,8 +1,10 @@
 fs = require('fs');
 
-const fileName = '.env.yaml';
+const fileName = 'app.yaml';
 const contents = `
 service: ${process.env.SERVICE_NAME}
+runtime: nodejs12
+instance_class: F2
 env_variables:
     SQL_USER: ${process.env.SQL_USER}
     SQL_DATABASE: ${process.env.SQL_DATABASE}
