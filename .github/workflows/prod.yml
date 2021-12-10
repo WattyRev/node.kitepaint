@@ -1,0 +1,32 @@
+name: Node SQL POC
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm ci
+      - name: Generate app.yaml
+        run: node ./generateAppYaml.js
+        env:
+          SERVICE_NAME: node-kitepaint
+          SQL_USER: prod
+          SQL_DATABASE: kitepaint
+          SQL_PASSWORD: ${{ secrets.SQL_PASSWORD }}
+          INSTANCE_CONNECTION_NAME: kitepaint:us-west1:kitepaint-prod
+      - name: Initialize Google Cloud SDK & Deploy
+        uses: ./.github/actions/deploy-to-google-app-engine
+        with:
+          service_account: ${{ secrets.GCP_SA_KEY }}
+          project_id: kitepaint
