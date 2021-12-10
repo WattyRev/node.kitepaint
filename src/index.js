@@ -20,7 +20,7 @@ app.use((request, response, next) => {
 });
 
 // Open the server on port 13390
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

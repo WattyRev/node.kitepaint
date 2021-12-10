@@ -4,15 +4,27 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "lint": "eslint ."
   },
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "eslint": "^7.11.0",
+    "eslint-plugin-zillow": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",

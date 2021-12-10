@@ -1,4 +1,4 @@
-fs = require('fs');
+const fs = require('fs');
 
 const fileName = 'app.yaml';
 const contents = `
