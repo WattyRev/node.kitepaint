@@ -4,13 +4,13 @@ const mysql = require('mysql');
 
 const app = express();
 
-const sqlConnection = mysql.createConnection({
-    user: process.env.SQL_USER,
-    database: process.env.SQL_DATABASE,
-    password: process.env.SQL_PASSWORD,
-    socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
-});
-sqlConnection.connect();
+// const sqlConnection = mysql.createConnection({
+//     user: process.env.SQL_USER,
+//     database: process.env.SQL_DATABASE,
+//     password: process.env.SQL_PASSWORD,
+//     socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
+// });
+// sqlConnection.connect();
 
 // Set headers for all APIs
 app.use((request, response, next) => {
@@ -20,7 +20,7 @@ app.use((request, response, next) => {
 });
 
 // Open the server on port 13390
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
