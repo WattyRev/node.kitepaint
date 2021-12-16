@@ -26,6 +26,10 @@ app.listen(port, () => {
 });
 
 // Define routes
+app.get('/', (request, response) => {
+    response.status(200).send('');
+});
+
 app.get('/api/', (request, response) => {
     response.send('test');
 });
