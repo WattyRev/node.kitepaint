@@ -4,6 +4,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads
 export HOME="/home/ec2-user/"
 
+export PATH=$PATH:/home/ec2-user/.nvm/versions/node/v12.22.7/bin
 echo $PATH
 
 # give permission to the files inside /secure_docs directory
