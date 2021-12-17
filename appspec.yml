@@ -5,7 +5,7 @@ files:
     destination: /home/ec2-user/node.kitepaint
 hooks:
   ApplicationStop:
-    - location: scripts/application_stop.sh
+    - location: scripts/application_stop1.sh
       timeout: 300
       runas: root
   ApplicationStart:
