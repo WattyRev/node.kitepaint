@@ -1,9 +1,9 @@
 #!/bin/bash
 # give permission to the files inside /secure_docs directory
-sudo chmod -R 777 /home/ubuntu/node.kitepaint
+sudo chmod -R 777 /home/ec2-user/node.kitepaint
 
 # navigate into current working directory
-cd /home/ubuntu/node.kitepaint
+cd /home/ec2-user/node.kitepaint
 
 # install node modules
 npm ci
