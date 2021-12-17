@@ -1,5 +1,5 @@
 extends:
-    - plugin:zillow/recommended
-    - plugin:zillow/jest
+  - plugin:zillow/recommended
+  - plugin:zillow/jest
 env:
-    browser: true
+  browser: true
