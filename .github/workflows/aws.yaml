@@ -26,4 +26,5 @@ jobs:
           --deployment-group-name kitepaint-beta_deployment \
           --deployment-config-name CodeDeployDefault.OneAtATime \
           --github-location repository=${{ github.repository }},commitId=${{ github.sha }} \
-          --file-exists-behavior OVERWRITE
+          --file-exists-behavior OVERWRITE \
+          --ignore-application-stop-failures

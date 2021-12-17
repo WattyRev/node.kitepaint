@@ -4,6 +4,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads
 export HOME="/home/ec2-user/"
 
+echo $PATH
+
 # give permission to the files inside /secure_docs directory
 sudo chmod -R 777 /home/ec2-user/node.kitepaint
 
