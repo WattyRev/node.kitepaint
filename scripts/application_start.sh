@@ -9,4 +9,4 @@ cd /home/ec2-user/node.kitepaint
 npm ci
 
 # start our node app in the background using pm2
-sudo pm2 start ‘npm start.’
+pm2 start ‘npm start.’
