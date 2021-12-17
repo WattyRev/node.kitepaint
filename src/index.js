@@ -31,5 +31,5 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/', (request, response) => {
-    response.send('test');
+    response.send('test 1');
 });
