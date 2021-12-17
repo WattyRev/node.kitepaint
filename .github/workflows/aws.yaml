@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -25,5 +25,5 @@ jobs:
           --application-name kitepaint-beta_application \
           --deployment-group-name kitepaint-beta_deployment \
           --deployment-config-name CodeDeployDefault.OneAtATime \
-          --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
+          --github-location repository=${{ github.repository }},commitId=${{ github.sha }}\
           --file-exists-behavior OVERWRITE
