@@ -24,7 +24,7 @@ app.get('/', (request, response) => {
 
 app.get('/api/', (request, response) => {
     const dynamoClient = new AWS.DynamoDB.DocumentClient();
-    dynamoClient.scan({ TableName: 'kitepaint-users-beta', (error, data) => {
+    dynamoClient.scan({ TableName: 'kitepaint-users-beta' }, (error, data) => {
         if (error) {
             response.status(500).send({
                 message: error,
