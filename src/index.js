@@ -1,9 +1,8 @@
 /* eslint-disable zillow/import/no-extraneous-dependencies, no-console */
 const express = require('express');
-const AWS = require('aws-sdk');
+const router = require('./routes');
 
 const app = express();
-AWS.config.update({ region: 'us-west-2' });
 
 // Set headers for all APIs
 app.use((request, response, next) => {
@@ -18,23 +17,4 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-// Define routes
-app.get('/', (request, response) => {
-    response.status(200).send('');
-});
-
-app.get('/api/', (request, response) => {
-    const dynamoClient = new AWS.DynamoDB.DocumentClient();
-    dynamoClient.scan({ TableName: 'kitepaint-users-beta' }, (error, data) => {
-        if (error) {
-            response.status(500).send({
-                message: error,
-            });
-            return;
-        }
-        const { Items } = data;
-        response.send({
-            users: Items,
-        });
-    });
-});
+app.use('/', router);
