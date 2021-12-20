@@ -33,7 +33,7 @@ app.get('/api/', (request, response) => {
         }
         const { Items } = data;
         response.send({
-            users: Items
+            users: Items,
         });
-    }});
+    });
 });
