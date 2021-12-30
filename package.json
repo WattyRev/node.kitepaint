@@ -12,6 +12,7 @@
     "aws-sdk": "^2.1046.0",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "express-oauth2-jwt-bearer": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "manikin-model": "^2.0.0",
     "prop-types": "^15.7.2"
