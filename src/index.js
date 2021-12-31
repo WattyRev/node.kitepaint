@@ -13,8 +13,8 @@ app.use((request, response, next) => {
 
 app.use(express.json());
 
-// Open the server on port 13390
-const port = process.env.PORT || 8080;
+// Open the server
+const port = process.env.PORT || 443;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

@@ -17,4 +17,4 @@ echo "installing node modules"
 npm ci
 
 echo "starting node app in the background using pm2"
-PORT=443 pm2 start src/index.js
+pm2 start src/index.js
