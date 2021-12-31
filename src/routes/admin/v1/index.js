@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const usersRouter = require('./users');
 const manufacturersRouter = require('./manufacturers');
 const designsRouter = require('./designs');
 const productsRouter = require('./products');
@@ -10,7 +9,6 @@ router.route('/').get((request, response) => {
     });
 });
 
-router.use('/users', usersRouter);
 router.use('/manufacturers', manufacturersRouter);
 router.use('/designs', designsRouter);
 router.use('/products', productsRouter);

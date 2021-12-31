@@ -11,6 +11,8 @@ app.use((request, response, next) => {
     next();
 });
 
+app.use(express.json());
+
 // Open the server on port 13390
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

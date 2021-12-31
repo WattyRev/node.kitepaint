@@ -15,7 +15,8 @@
     "express-oauth2-jwt-bearer": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
     "manikin-model": "^2.0.0",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@actions/core": "^1.6.0",
