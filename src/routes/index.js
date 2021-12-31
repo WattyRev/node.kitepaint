@@ -2,6 +2,10 @@ const router = require('express').Router();
 const AWS = require('aws-sdk');
 const apiRouter = require('./api');
 const adminRouter = require('./admin');
+const checkJwt = require('../util/checkJwt');
+const { requiredScopes } = require('express-oauth2-jwt-bearer');
+
+const checkScopes = requiredScopes('admin');
 
 AWS.config.update({ region: 'us-west-2' });
 
@@ -11,6 +15,6 @@ router.route('/ping').get((request, response) => {
 
 router.use('/api', apiRouter);
 
-router.use('/admin', adminRouter);
+router.use('/admin', checkJwt, checkScopes, adminRouter);
 
 module.exports = router;
