@@ -29,28 +29,28 @@ router
      * }
      */
     .get(async (request, response) => {
-        const { Items } = await scanDynamo({
-            TableName: 'kitepaint-beta-manufacturers',
-            Limit: 100,
-        }).catch(error => {
+        try {
+            const { Items } = await scanDynamo({
+                TableName: 'kitepaint-beta-manufacturers',
+                Limit: 100,
+            });
+            response.status(200).json({
+                meta: {
+                    sucessMessage: 'Manufacturers retrieved successfully',
+                },
+                manufacturers: Items.map(item => {
+                    const manufacturer = transformManufacturer(item);
+                    return manufacturer.buildAdminPayload();
+                }),
+            });
+        } catch (error) {
             response.status(500).json({
                 meta: {
                     errorMessage: error,
                 },
                 manufacturers: [],
             });
-            return Promise.reject(error);
-        });
-
-        response.status(200).json({
-            meta: {
-                sucessMessage: 'Manufacturers retrieved successfully',
-            },
-            manufacturers: Items.map(item => {
-                const manufacturer = transformManufacturer(item);
-                return manufacturer.builadAdminPayload();
-            }),
-        });
+        }
     })
 
     /**
@@ -80,24 +80,25 @@ router
      * }
      */
     .post(async (request, response) => {
-        const manufacturer = transformManufacturer(request.body.manufacturer);
-        const data = await putDynamo({
-            TableName: 'kitepaint-beta-manufacturers',
-            Item: {
-                ...manufacturer.buildAdminPayload(),
-                id: uuid(),
-                createdDateTime: new Date().toISOString(),
-                updatedDateTime: new Date().toISOString(),
-            },
-        }).catch(error => {
+        try {
+            const manufacturer = transformManufacturer(request.body.manufacturer);
+            const data = await putDynamo({
+                TableName: 'kitepaint-beta-manufacturers',
+                Item: {
+                    ...manufacturer.buildAdminPayload(),
+                    id: uuid(),
+                    createdDateTime: new Date().toISOString(),
+                    updatedDateTime: new Date().toISOString(),
+                },
+            });
+            response.status(201).json(data);
+        } catch (error) {
             response.status(500).json({
                 meta: {
                     errorMessage: error,
                 },
             });
-            return Promise.reject(error);
-        });
-        response.status(201).json(data);
+        }
     });
 
 module.exports = router;
